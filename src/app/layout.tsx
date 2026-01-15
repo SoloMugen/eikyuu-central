@@ -20,6 +20,9 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "@/components/ThemeProvider";
+import CollapsibleSidebar from "@/components/CollapsibleSidebar";
+import Footer from "@/components/Footer";
+import ScrollToBottom from "@/components/ScrollToBottom";
 
 // ... existing imports
 
@@ -43,16 +46,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex min-h-screen bg-background text-foreground">
+          <div className="flex min-h-screen bg-background text-foreground relative">
+            <ScrollToBottom />
             {/* Main Feed Area */}
-            <main className="flex-1 w-full p-0">
-              {children}
+            <main className="flex-1 w-full p-0 flex flex-col">
+              <div className="flex-1">
+                {children}
+              </div>
+              <Footer />
             </main>
 
             {/* Evidence Sidebar (Desktop only or Drawer on mobile) */}
-            <aside className="hidden xl:block w-80 min-h-screen border-l border-zinc-800 p-4 sticky top-0 h-screen overflow-y-auto">
-              {evidence}
-            </aside>
+            <CollapsibleSidebar>{evidence}</CollapsibleSidebar>
           </div>
           {/* Conflict Module (Positioned or Modal-like) */}
           {conflict}

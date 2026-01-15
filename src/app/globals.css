@@ -64,70 +64,227 @@ body {
   color: var(--midnight);
 }
 
-/* --- New Homepage Styles --- */
+/* --- STRICT PORT FROM TEMP-HOME.HTML --- */
+
+:root {
+  --geo-blue: #3B82F6;
+  --gaming-orange: #FF5F00;
+  --twitch-purple: #9146FF;
+  --anime-gold: #FFB800;
+  --science-emerald: #10B981;
+}
+
 .font-display {
   font-weight: 900;
   letter-spacing: -0.05em;
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Full Width Zone Logic */
+.full-zone {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 5rem 2rem;
+}
+
+.zone-content {
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+/* Hub Card Overhaul - Fixing the 'White' issue */
+.hub-card {
+  border-radius: 2rem;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Specific Section Card Backgrounds */
+.zone-geo .hub-card {
+  background: #FFFFFF;
+  border-color: #DBEAFE;
+}
+
+.zone-gaming .hub-card {
+  background: #1A1A24;
+  color: white;
+  border-color: rgba(255, 95, 0, 0.2);
+}
+
+.zone-twitch .hub-card {
+  background: #18181b;
+  color: white;
+  border-color: rgba(145, 70, 255, 0.2);
+}
+
+.zone-anime .hub-card {
+  background: #141417;
+  color: white;
+  border-color: rgba(255, 184, 0, 0.2);
+}
+
+.zone-science .hub-card {
+  background: #F8FAF9;
+  border-color: #D1FAE5;
+}
+
+.hub-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.2);
+}
+
+/* Section Wrappers */
+.zone-geo {
+  background-color: #F0F7FF;
+  border-top: 1px solid #DBEAFE;
+}
+
+.zone-gaming {
+  background-color: #0B0B0F;
+  /* Note: Background image handled in component or ignored if url not local */
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.zone-twitch {
+  background-color: #0e0e10;
+  border-top: 1px solid rgba(145, 70, 255, 0.26);
+  /* Converted hex alpha */
+}
+
+.zone-anime {
+  background-color: #0A0A0C;
+  border-top: 1px solid rgba(255, 184, 0, 0.26);
+}
+
+.zone-science {
+  background-color: #F1F7F5;
+}
+
+.section-label {
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.6em;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.section-label::after {
+  content: '';
+  flex-grow: 1;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.2;
+}
+
+/* Carousel Styles */
+.carousel-container {
+  width: 100vw;
+  height: 700px;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-item {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  z-index: 1;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  z-index: 10;
+}
+
+.aspect-poster {
+  aspect-ratio: 2 / 3;
+}
+
+/* Grid Matrix Animation */
+.grid-matrix-svg {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 5s linear infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+/* --- Gaming Page Specific Styles --- */
+.gaming-slate-bg {
+  background-color: #050505;
+  color: #E2E8F0;
+}
+
+.gaming-card {
+  background: #111111;
+  border: 1px solid rgba(255, 95, 0, 0.15);
+  border-radius: 2rem;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
-.dark .glass-card {
-  background: rgba(20, 20, 20, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.gaming-card:hover {
+  box-shadow: 0 0 50px rgba(255, 95, 0, 0.25);
+  border-color: #FF5F00;
+  transform: translateY(-8px);
 }
 
-.glass-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  border-color: rgba(37, 99, 235, 0.2);
+.nexus-grid-bg {
+  background-image: radial-gradient(rgba(255, 95, 0, 0.12) 1px, transparent 1px);
+  background-size: 50px 50px;
 }
 
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1.5rem;
+.neon-pulse {
+  box-shadow: 0 0 10px #FF5F00;
+  animation: pulse-orange 2s infinite;
+}
+
+@keyframes pulse-orange {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 95, 0, 0.6);
+  }
+
+  70% {
+    box-shadow: 0 0 0 15px rgba(255, 95, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 95, 0, 0);
+  }
+}
+
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-}
-
-@media (max-width: 1280px) {
-  .bento-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .bento-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Category Accents */
-.cat-geo {
-  color: #2563eb;
-  background: #eff6ff;
-  border-color: #dbeafe;
-}
-
-.cat-gaming {
-  color: #7c3aed;
-  background: #f5f3ff;
-  border-color: #ede9fe;
-}
-
-.cat-science {
-  color: #059669;
-  background: #ecfdf5;
-  border-color: #d1fae5;
-}
-
-.cat-anime {
-  color: #e11d48;
-  background: #fff1f2;
-  border-color: #ffe4e6;
+  height: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0.02) 50%, rgba(0, 0, 0, 0.05) 50%);
+  background-size: 100% 2px;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.2;
 }
