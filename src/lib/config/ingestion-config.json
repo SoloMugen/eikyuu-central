@@ -1,0 +1,54 @@
+{
+    "project": "Eikyuu News",
+    "ingestion_targets": {
+        "hollywood": {
+            "sources": [
+                "Variety",
+                "Deadline",
+                "The Hollywood Reporter"
+            ],
+            "priority": "High",
+            "method": "API / XHR Intercept"
+        },
+        "japanese_entertainment": {
+            "sources": [
+                "Natalie.mu",
+                "Oricon News",
+                "PR TIMES Japan"
+            ],
+            "priority": "High",
+            "method": "Headless Browser / Hydration State Extraction"
+        },
+        "korean_entertainment": {
+            "sources": [
+                "Soompi",
+                "Naver News",
+                "Dispatch"
+            ],
+            "priority": "High",
+            "method": "Contextual Extraction / Double-Pass Translation"
+        },
+        "science": {
+            "sources": [
+                "EurekAlert!",
+                "ScienceDaily",
+                "arXiv"
+            ],
+            "priority": "Critical",
+            "method": "RSS / PDF Parsing"
+        },
+        "world_geo_politics": {
+            "sources": [
+                "Reuters",
+                "Associated Press",
+                "UN News"
+            ],
+            "priority": "Critical",
+            "method": "Wire Service API"
+        }
+    },
+    "ai_orchestration": {
+        "scanner": "Gemini 1.5 Flash",
+        "verifier": "Gemini 3.0 Pro"
+    }
+}
