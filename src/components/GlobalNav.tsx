@@ -5,9 +5,12 @@ import { ThemeToggle } from './ThemeToggle';
 export default function GlobalNav() {
     const navItems = [
         { name: 'GLOBAL', href: '/', active: true },
-        { name: 'GAMING', href: '/gaming' },
-        { name: 'SCIENCE', href: '/science' },
         { name: 'ENTERTAINMENT', href: '/entertainment' },
+        { name: 'GAMING', href: '/gaming' },
+        { name: 'TWITCH', href: '/twitch' },
+        { name: 'ANIME', href: '/anime' },
+        { name: 'SCIENCE', href: '/science' },
+        { name: 'GEO.POL', href: '/geo_politics' },
     ];
 
     return (

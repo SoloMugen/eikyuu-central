@@ -18,11 +18,20 @@ CREATE TABLE sources (
 CREATE TABLE articles (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   title TEXT NOT NULL,
-  slug TEXT UNIQUE,
+  url TEXT UNIQUE,
+  slug TEXT,
   summary_bullets JSONB, -- The "10-Second Truth"
+  summary TEXT, -- Short summary for cards
   content_markdown TEXT,  -- The "Deep Dive"
+  content TEXT, -- Full content fallback
   legitimacy_score INT CHECK (legitimacy_score <= 100),
+  legitimacy_analysis TEXT,
   category TEXT,
+  sub_category TEXT,
+  image_url TEXT,
+  image_prompt TEXT,
+  source TEXT,
+  published_at TIMESTAMP WITH TIME ZONE,
   embedding VECTOR(1536), -- For Semantic Clustering/Recommendations
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );

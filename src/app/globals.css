@@ -1,21 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --background: #F9FAFB;
+  --background: #FDFCFD;
+  /* --bg-light */
   --foreground: #0F172A;
   --card: #FFFFFF;
-  --midnight: #0C0C0C;
+  /* --card-light */
+  --magenta: #D946EF;
+  --gold: #EAB308;
+  --midnight: #0F0913;
+  /* --bg-dark */
   --accent-orange: #FF4500;
   --accent-lime: #A8E6CF;
-  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border: #E2E8F0;
+
   --font-oswald: var(--font-oswald);
   --font-inter: var(--font-inter);
 }
 
 .dark {
-  --background: #0C0C0C;
-  --foreground: #F8FAFC;
-  --card: #161616;
+  --background: #0F0913;
+  /* --bg-dark */
+  --foreground: #F8F9FA;
+  --card: rgba(30, 18, 38, 0.7);
+  /* --card-dark */
+  --glass-border: rgba(217, 70, 239, 0.3);
 }
 
 @theme inline {
@@ -30,13 +39,70 @@
   --font-body: var(--font-inter);
 }
 
-/* Base Styles */
+/* Base Styles Update */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter), sans-serif;
-  overflow-x: hidden;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* Common Classes from Template */
+.ent-card {
+  background: var(--card);
+  border-radius: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.dark .ent-card {
+  border: 1px solid rgba(217, 70, 239, 0.1);
+}
+
+.ent-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px -12px rgba(217, 70, 239, 0.2);
+  border-color: var(--magenta);
+}
+
+.text-muted {
+  color: #64748B;
+}
+
+.dark .text-muted {
+  color: #A1A1AA;
+}
+
+.section-line {
+  border-color: var(--glass-border);
+}
+
+.pulse-magenta {
+  box-shadow: 0 0 0 0 rgba(217, 70, 239, 0.7);
+  animation: pulse-pink 2s infinite;
+}
+
+@keyframes pulse-pink {
+  0% {
+    box-shadow: 0 0 0 0 rgba(217, 70, 239, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(217, 70, 239, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(217, 70, 239, 0);
+  }
+}
+
+.collage-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
 }
 
 /* Custom Scrollbar */
@@ -152,6 +218,22 @@ body {
 
 .zone-gaming {
   background-color: #0B0B0F;
+
+  /* Animation for Homepage Progress Bar */
+  @keyframes grow {
+    from {
+      width: 0%;
+    }
+
+    to {
+      width: 100%;
+    }
+  }
+
+  .animate-grow {
+    animation: grow 5s linear forwards;
+  }
+
   /* Note: Background image handled in component or ignored if url not local */
   background-size: cover;
   background-attachment: fixed;

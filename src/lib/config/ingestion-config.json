@@ -1,50 +1,59 @@
 {
     "project": "Eikyuu News",
     "ingestion_targets": {
-        "hollywood": {
+        "twitch": {
             "sources": [
-                "Variety",
-                "Deadline",
-                "The Hollywood Reporter"
+                "LivestreamFails",
+                "Dexerto",
+                "Kotaku"
             ],
             "priority": "High",
-            "method": "API / XHR Intercept"
+            "method": "Social Sentiment / Trending"
         },
-        "japanese_entertainment": {
+        "gaming": {
             "sources": [
-                "Natalie.mu",
-                "Oricon News",
-                "PR TIMES Japan"
+                "IGN",
+                "GamesRadar",
+                "Polygon"
             ],
-            "priority": "High",
-            "method": "Headless Browser / Hydration State Extraction"
+            "priority": "Critical",
+            "method": "ScraperAgent"
         },
-        "korean_entertainment": {
+        "anime": {
             "sources": [
-                "Soompi",
-                "Naver News",
-                "Dispatch"
+                "AnimeNewsNetwork",
+                "MyAnimeList",
+                "Crunchyroll News"
             ],
             "priority": "High",
-            "method": "Contextual Extraction / Double-Pass Translation"
+            "method": "Contextual Extraction"
         },
         "science": {
             "sources": [
-                "EurekAlert!",
                 "ScienceDaily",
-                "arXiv"
+                "Phys.org",
+                "Nature"
             ],
-            "priority": "Critical",
+            "priority": "High",
             "method": "RSS / PDF Parsing"
         },
-        "world_geo_politics": {
+        "geo_politics": {
             "sources": [
                 "Reuters",
-                "Associated Press",
-                "UN News"
+                "AP News",
+                "Al Jazeera"
             ],
             "priority": "Critical",
             "method": "Wire Service API"
+        },
+        "entertainment": {
+            "sources": [
+                "Variety",
+                "Hollywood Reporter",
+                "Deadline"
+            ],
+            "priority": "Medium",
+            "method": "ScraperAgent"
         }
     },
     "ai_orchestration": {

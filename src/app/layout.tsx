@@ -57,7 +57,7 @@ export default function RootLayout({
             </main>
 
             {/* Evidence Sidebar (Desktop only or Drawer on mobile) */}
-            <CollapsibleSidebar>{evidence}</CollapsibleSidebar>
+            {/* <CollapsibleSidebar>{evidence}</CollapsibleSidebar> */}
           </div>
           {/* Conflict Module (Positioned or Modal-like) */}
           {conflict}
